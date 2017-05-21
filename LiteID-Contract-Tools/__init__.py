@@ -87,7 +87,7 @@ class LiteIDContract:
 												self.contract_id,
 												'addHash(bytes32,bytes32)',
 												[salted_hash, salt])
-		print "Waiting for addHash to be mined"
+		print("Waiting for addHash to be mined")
 		while self.connection.eth_getTransactionReceipt(tx) is None:
 			time.sleep(1)
 		return original_hash
@@ -103,7 +103,7 @@ class LiteIDContract:
 												self.byte_code, 300000,
 												sig='addHash(bytes32,bytes32)',
 												args=[salted_hash, salt])
-		print "Waiting for contract to be mined"
+		print("Waiting for contract to be mined")
 		while self.connection.eth_getTransactionReceipt(tx_id) is None:
 			time.sleep(1)
 		self.contract_id = self.connection.eth_getTransactionReceipt(tx_id)['contractAddress']
